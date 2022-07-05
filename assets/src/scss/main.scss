@@ -1,0 +1,24 @@
+// pico
+@import 'vendor/pico/pico.scss';
+
+// variables
+$gullGray: #a2afb9;
+
+// header
+header.container {
+  h1,
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+// hex value field
+input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']).hex-value {
+  padding: var(--form-element-spacing-vertical)
+    var(--form-element-spacing-horizontal);
+  padding-inline-start: calc(var(--form-element-spacing-horizontal) + 1.75rem);
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 45 40' style='enable-background:new 0 0 45 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23A2AFB9;%7D%0A%3C/style%3E%3Cpath class='st0' d='M44.5,13.6l0.5-2H33.5l2.9-11.3h-2l-2.9,11.3H18.2l3-11.6h-2l-3,11.6H4.7l-0.5,2h11.5l-3.4,13.1H0.5l-0.5,2 h11.8L9,39.7h2l2.9-11h13.3L24.1,40h2l2.9-11.3h11.2l0.5-2H29.6L33,13.6H44.5z M14.3,26.7l3.4-13.1H31l-3.4,13.1H14.3z'/%3E%3C/svg%3E");
+  background-position: center left 1.125rem;
+  background-size: 1rem auto;
+  background-repeat: no-repeat;
+}

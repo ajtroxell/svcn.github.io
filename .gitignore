@@ -1,0 +1,74 @@
+# DCC Marketing Wordpress .gitignore
+# http://www.dccmarketing.com
+
+# Node artifact files
+node_modules/
+
+# ignore certain files
+readme.html
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# track .editorconfig file (i.e. do NOT ignore it)
+!.jscsrc
+!.travis.yml
+!.jshintignore
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+Thumbs.db
+.DS_Store
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.py[cod]
+*.log
+
+# Maven
+target/
+
+# JetBrains IDE
+.idea/
+
+# Unit test reports
+TEST*.xml
+
+# Applications
+*.app
+*.exe
+*.war
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+# Wordpress Specific
+wp-content/uploads
+wp-content/cache
+wp-content/themes/**/assets/src/
+.sucuriquarantine/
+.well-known
+debug.txt
+debug.log
