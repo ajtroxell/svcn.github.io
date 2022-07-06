@@ -1686,29 +1686,6 @@ var ntc = {
 ntc.init();
 
 jQuery(document).ready(function ($) {
-  // ntc example
-  // var n_match = ntc.name('#6195ED');
-  // This is the RGB value of the closest matching color
-  // n_rgb = n_match[0];
-  // This is the text string for the name of the match
-  // n_name = n_match[1];
-  // True if exact color match, False if close-match
-  // n_exactmatch = n_match[2];
-  // alert(n_match);
-
-  // $('#hexValue').on('input change paste keyup mouseup', function () {
-  //   var hexVal = $(this).val();
-  //   var hexValLength = $(this).val().length;
-  //   if (hexValLength === 6) {
-  //     var hexCode = '#' + hexVal;
-  //     var n_match = ntc.name(hexCode);
-  //     var n_rgb = n_match[0];
-  //     var n_name = n_match[1];
-  //     var n_exactmatch = n_match[2];
-  //     console.log(n_match);
-  //   }
-  // });
-
   // camel case conversion
   function camelize(str) {
     return str
@@ -1718,7 +1695,8 @@ jQuery(document).ready(function ($) {
       .replace(/\s+/g, '');
   }
 
-  // select all in hex input
+  // single value
+  // select in hex input
   $('#hexValue').on('click', function () {
     $(this).select();
   });
@@ -1727,11 +1705,12 @@ jQuery(document).ready(function ($) {
   $('#hexValue').on('input', function () {
     var hexVal = $(this).val();
     var hexValLength = $(this).val().length;
+
     if (hexValLength === 6) {
       var hexCode = '#' + hexVal;
 
       // change color input value
-      $('#hexColor').val(hexCode);
+      $('#hexColor span').css('background', hexCode);
 
       // populate variable field
       var n_match = ntc.name(hexCode);
@@ -1739,14 +1718,11 @@ jQuery(document).ready(function ($) {
       var n_name = n_match[1];
       var n_exactmatch = n_match[2];
       var variableName = camelize(n_name);
-
-      // focus and select variable
       $('#sassVariable').val('$' + variableName + ': ' + hexCode + ';');
-      // $('#sassVariable').focus().select();
     }
   });
   // on change color picker
-  $('#hexColor').on('change', function () {
+  $('#hexColor').on('focusout, blue', function () {
     var hexHashVal = $(this).val();
     var hexVal = hexHashVal.replace(/^#/, '');
 
@@ -1762,6 +1738,72 @@ jQuery(document).ready(function ($) {
     $('#sassVariable')
       .val('$' + variableName + ': ' + hexHashVal + ';')
       .select();
+  });
+
+  // select variable on click
+  $('#sassVariable').on('click', function () {
+    $(this).select();
+  });
+
+  // multiple values
+  // select all in hex input
+  $('#hexValues').on('click', function () {
+    $(this).select();
+  });
+
+  // split hex value lines
+  $('#hexValues').on('focusout, blur', function () {
+    $('#sassVariables').html('');
+    $('#hexColors').html('');
+    var value = $('#hexValues').val().split('\n');
+    for (var i = 0; i < value.length; i++) {
+      var hexVal = value[i];
+      var hexValLength = value[i].length;
+
+      if (hexValLength === 6) {
+        var hexCode = '#' + hexVal;
+
+        // populate variable field
+        var n_match = ntc.name(hexCode);
+        var n_rgb = n_match[0];
+        var n_name = n_match[1];
+        var n_exactmatch = n_match[2];
+        var variableName = camelize(n_name);
+        var hexValueEach = '$' + variableName + ': ' + hexCode + ';';
+        $('#sassVariables').append(
+          '$' + variableName + ': ' + hexCode + ';' + '\n'
+        );
+        $('#hexColors').append(
+          '<span style="background:' + hexCode + '"></span>'
+        );
+      }
+    }
+  });
+
+  // select variable on click
+  $('#sassVariables').on('click', function () {
+    $(this).select();
+  });
+
+  // colors height
+  function hexColorsHeight() {
+    var hexValHeight = $('#hexValues').outerHeight();
+    $('#hexColors').css('height', hexValHeight);
+  }
+
+  // swap batch and single
+  $('.btn-batch').on('click', function () {
+    $('.batch-namer').removeClass('inactive');
+    $('.single-namer').addClass('inactive');
+    $('.btn-single').removeClass('inactive');
+    $('.btn-batch').addClass('inactive');
+    hexColorsHeight();
+  });
+  $('.btn-single').on('click', function () {
+    $('.batch-namer').addClass('inactive');
+    $('.single-namer').removeClass('inactive');
+    $('.btn-single').addClass('inactive');
+    $('.btn-batch').removeClass('inactive');
   });
 });
 

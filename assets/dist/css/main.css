@@ -2388,17 +2388,82 @@ textarea,
          -o-transition-duration: 0s !important;
             transition-duration: 0s !important; } }
 
-header.container h1,
-header.container h2 {
-  margin-bottom: 0; }
+.text-normal {
+  font-style: normal; }
 
-input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']).hex-value {
+.label {
+  display: block;
+  margin-bottom: calc(var(--spacing) * 0.25);
+  font-weight: var(--form-label-font-weight, var(--font-weight)); }
+
+textarea,
+.textarea {
+  resize: none; }
+  textarea::-webkit-scrollbar,
+  .textarea::-webkit-scrollbar {
+    width: 7px;
+    width: 0.4375rem; }
+  textarea::-webkit-scrollbar-thumb:vertical,
+  .textarea::-webkit-scrollbar-thumb:vertical {
+    margin: 5px;
+    margin: 0.3125rem;
+    background-color: var(--form-element-border-color);
+    border: 1px solid var(--background-color);
+    border: 0.0625rem solid var(--background-color);
+    -webkit-border-radius: 5px;
+    -webkit-border-radius: 0.3125rem; }
+  textarea::-webkit-scrollbar-thumb:vertical:hover,
+  .textarea::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: var(--form-element-active-border-color); }
+  textarea::-webkit-scrollbar-button:start:decrement, textarea::-webkit-scrollbar-button:end:increment,
+  .textarea::-webkit-scrollbar-button:start:decrement,
+  .textarea::-webkit-scrollbar-button:end:increment {
+    height: 5px;
+    height: 0.3125rem;
+    display: block; }
+
+.textinput,
+.textarea {
+  --background-color: var(--form-element-background-color);
+  --border-color: var(--form-element-border-color);
+  --color: var(--form-element-color);
+  --box-shadow: none;
+  margin-top: calc(var(--spacing) * 0.25);
+  margin-bottom: var(--spacing);
   padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
-  -webkit-padding-start: calc(var(--form-element-spacing-horizontal) + 1.75rem);
-          padding-inline-start: calc(var(--form-element-spacing-horizontal) + 1.75rem);
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 45 40' style='enable-background:new 0 0 45 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23A2AFB9;%7D%0A%3C/style%3E%3Cpath class='st0' d='M44.5,13.6l0.5-2H33.5l2.9-11.3h-2l-2.9,11.3H18.2l3-11.6h-2l-3,11.6H4.7l-0.5,2h11.5l-3.4,13.1H0.5l-0.5,2 h11.8L9,39.7h2l2.9-11h13.3L24.1,40h2l2.9-11.3h11.2l0.5-2H29.6L33,13.6H44.5z M14.3,26.7l3.4-13.1H31l-3.4,13.1H14.3z'/%3E%3C/svg%3E");
-  background-position: center left 1.125rem;
-  background-size: 1rem auto;
-  background-repeat: no-repeat; }
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+  background-color: var(--background-color);
+  -webkit-box-shadow: var(--box-shadow);
+          box-shadow: var(--box-shadow);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition), -webkit-box-shadow var(--transition);
+  font-size: 1rem;
+  line-height: calc(var(--line-height) - 0.12);
+  font-family: inherit;
+  font-weight: var(--font-weight);
+  color: var(--color);
+  letter-spacing: inherit;
+  overflow-y: auto; }
+  .textinput span,
+  .textarea span {
+    display: block;
+    width: 100%;
+    border-top: 1px solid var(--background-color);
+    border-top: 0.0625rem solid var(--background-color);
+    border-bottom: 1px solid var(--background-color);
+    border-bottom: 0.0625rem solid var(--background-color);
+    border-radius: 3px;
+    border-radius: 0.1875rem; }
+
+.textinput {
+  height: calc( (1rem * var(--line-height)) + (var(--form-element-spacing-vertical) * 2) + (var(--border-width) * 2));
+  overflow-y: visible; }
+
+.inactive {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */

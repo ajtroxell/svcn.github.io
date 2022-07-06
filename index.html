@@ -92,37 +92,75 @@
 <body class="homepage">
 
   <header class="container">
-    <h1>S &bull; V &bull; C &bull; N</h1>
-    <h2>SASS Variable Color Namer</h2>
-    <!-- <span class="nav-toggle" aria-label="Toggle Main Navigation" tabindex="0"><span></span><span></span><span></span></span>
-    <div class="nav-wrap">
-      <nav class="nav-primary" aria-label="Main Navigation" role="navigation" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
-        <h2 class="sr-only">Main Navigation</h2>
-        <ul>
-          <li></li>
-        </ul>
-      </nav>
-    </div> -->
+    <div class="headings">
+      <h1>S &bull; V &bull; C &bull; N</h1>
+      <h2>SASS Variable Color Namer</h2>
+    </div>
   </header>
 
   <main id="main" class="container" aria-label="Main Content">
     <section class="content-wrap" aria-label="Color Namer">
-      <div class="grid">
+      <!-- single namer -->
+      <div class="grid single-namer active">
         <div>
-          <label for="hexValue">Hex Value
-            <input class="hex-value" type="text" id="hexValue" name="hexValue" aria-label="Hex Value" minlength="6" maxlength="6" size="6">
+          <label for="hexValue">Hex Value <em data-tooltip="Exclude # symbol." class="text-normal"><small>&#x2139;</small></em>
+            <input type="text" id="hexValue" name="hexValue" aria-label="Hex Value" minlength="6" maxlength="6" size="6" value="0eaaaa">
           </label>
         </div>
         <div>
-          <label for="hexColor">Color
-            <input type="color" id="hexColor" name="hexColor" value="#0eaaaa">
-          </label>
+          <div class="label">Color
+            <div class="textinput" id="hexColor" aria-label="Colors">
+              <span style="background:#0eaaaa">&nbsp;</span>
+            </div>
+          </div>
         </div>
         <div>
           <label for="sassVariable">Variable
-            <input type="text" id="sassVariable" name="sassVariable" aria-label="Variable">
+            <input type="text" id="sassVariable" name="sassVariable" aria-label="Variable" value="$blueChill: #0eaaaa;">
           </label>
         </div>
+      </div>
+      <!-- batch namer -->
+      <div class="grid batch-namer inactive">
+        <div>
+          <label for="hexValues">Hex Values <em data-tooltip="One per line. Exclude # symbol." class="text-normal"><small>&#x2139;</small></em>
+            <textarea name="hexValues" id="hexValues" cols="30" rows="5" aria-label="Hex Values">0eaaaa
+0065bd
+a6a9aa
+d47ce7
+f38503</textarea>
+          </label>
+        </div>
+        <div>
+          <div class="label">Colors
+            <div class="textarea" id="hexColors" aria-label="Colors">
+              <span style="background:#0eaaaa">&nbsp;</span>
+              <span style="background:#0065bd">&nbsp;</span>
+              <span style="background:#a6a9aa">&nbsp;</span>
+              <span style="background:#d47ce7">&nbsp;</span>
+              <span style="background:#f38503">&nbsp;</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="sassVariables">Variables
+            <textarea name="sassVariables" id="sassVariables" cols="30" rows="5" aria-label="Variables">$blueChill: #0eaaaa;
+$scienceBlue: #0065bd;
+$grayChateau: #a6a9aa;
+$lavender: #d47ce7;
+$tangerine: #f38503;</textarea>
+          </label>
+        </div>
+      </div>
+      </div>
+      <!-- buttons -->
+      <div class="grid">
+        <div></div>
+        <div>
+          <button data-tooltip="Generate variable names from a batch of HEX color values" class="secondary outline btn-batch"><small>Batch Namer</small></button>
+          <button data-tooltip="Generate variable names from a single HEX color value" class="secondary outline btn-single inactive"><small>Single Namer</small></button>
+        </div>
+        <div></div>
       </div>
     </section>
   </main>
